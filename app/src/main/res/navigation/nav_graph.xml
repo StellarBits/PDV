@@ -18,5 +18,79 @@
         android:id="@+id/mainScreenFragment"
         android:name="com.example.pdv.ui.mainscreen.MainScreenFragment"
         android:label="fragment_main_screen"
-        tools:layout="@layout/fragment_main_screen" />
+        tools:layout="@layout/fragment_main_screen" >
+        <action
+            android:id="@+id/action_mainScreenFragment_to_printLayoutFragment"
+            app:destination="@id/printLayoutFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_tefSettingsFragment"
+            app:destination="@id/tefSettingsFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_taxSettingsFragment"
+            app:destination="@id/taxSettingsFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_networkSettingsFragment"
+            app:destination="@id/networkSettingsFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_salesFragment"
+            app:destination="@id/salesFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_synchronizationFragment"
+            app:destination="@id/synchronizationFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_registrationsFragment"
+            app:destination="@id/registrationsFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_reportFragment"
+            app:destination="@id/reportFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/networkSettingsFragment"
+        android:name="com.example.pdv.ui.settings.networksettings.NetworkSettingsFragment"
+        android:label="fragment_network_settings"
+        tools:layout="@layout/fragment_network_settings" />
+    <fragment
+        android:id="@+id/printLayoutFragment"
+        android:name="com.example.pdv.ui.settings.printlayout.PrintLayoutFragment"
+        android:label="fragment_print_layout"
+        tools:layout="@layout/fragment_print_layout" />
+    <fragment
+        android:id="@+id/registrationsFragment"
+        android:name="com.example.pdv.ui.registrations.RegistrationsFragment"
+        android:label="fragment_registrations"
+        tools:layout="@layout/fragment_registrations" />
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="com.example.pdv.ui.report.ReportFragment"
+        android:label="fragment_report"
+        tools:layout="@layout/fragment_report" />
+    <fragment
+        android:id="@+id/salesFragment"
+        android:name="com.example.pdv.ui.sales.SalesFragment"
+        android:label="fragment_sales"
+        tools:layout="@layout/fragment_sales" >
+        <action
+            android:id="@+id/action_salesFragment_to_finalizeSaleFragment"
+            app:destination="@id/finalizeSaleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/synchronizationFragment"
+        android:name="com.example.pdv.ui.synchronization.SynchronizationFragment"
+        android:label="fragment_synchronization"
+        tools:layout="@layout/fragment_synchronization" />
+    <fragment
+        android:id="@+id/taxSettingsFragment"
+        android:name="com.example.pdv.ui.settings.taxsettings.TaxSettingsFragment"
+        android:label="fragment_tax_settings"
+        tools:layout="@layout/fragment_tax_settings" />
+    <fragment
+        android:id="@+id/tefSettingsFragment"
+        android:name="com.example.pdv.ui.settings.tefsettings.TefSettingsFragment"
+        android:label="fragment_tef_settings"
+        tools:layout="@layout/fragment_tef_settings" />
+    <fragment
+        android:id="@+id/finalizeSaleFragment"
+        android:name="com.example.pdv.ui.sales.finalizesale.FinalizeSaleFragment"
+        android:label="fragment_finalize_sale"
+        tools:layout="@layout/fragment_finalize_sale" />
 </navigation>
