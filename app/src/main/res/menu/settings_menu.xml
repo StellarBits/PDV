@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/print_layout"
+        android:title="@string/print_layout_menu_text" />
+
+    <item
+        android:id="@+id/tef_settings"
+        android:title="@string/tef_settings_menu_text" />
+
+    <item
+        android:id="@+id/tax_settings"
+        android:title="@string/tax_settings_menu_text" />
+
+    <item
+        android:id="@+id/network_settings"
+        android:title="@string/network_settings_menu_text" />
+
+    <item
+        android:id="@+id/about_us"
+        android:title="@string/about_us_menu_text" />
+</menu>

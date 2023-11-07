@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PDV</string>
+    <string name="print_layout_menu_text">Layout da Impressão</string>
+    <string name="tef_settings_menu_text">Configurações do TEF</string>
+    <string name="tax_settings_menu_text">Configurações Fiscais</string>
+    <string name="network_settings_menu_text">Configurações de Rede</string>
+    <string name="about_us_menu_text">Sobre nós</string>
 </resources>
