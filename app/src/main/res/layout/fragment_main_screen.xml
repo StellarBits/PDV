@@ -12,7 +12,7 @@
         android:id="@+id/left_panel"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="?attr/actionBarSize"
         android:background="@color/secondary"
         app:layout_constraintHorizontal_weight="5"
         app:layout_constraintEnd_toStartOf="@id/right_panel"
@@ -24,8 +24,9 @@
         android:id="@+id/right_panel"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_marginStart="10dp"
+        android:paddingHorizontal="40dp"
         app:layout_constraintHorizontal_weight="5"
         app:layout_constraintStart_toEndOf="@id/left_panel"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,10 +34,12 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
-            android:id="@+id/button"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/button_style"
+            android:id="@+id/sales_button"
+            android:layout_width="165dp"
+            android:layout_height="165dp"
+            android:background="@drawable/button_ripple"
+            android:clickable="true"
+            android:focusable="true"
             android:padding="20dp"
             android:scaleType="fitXY"
             android:src="@drawable/baseline_point_of_sale_24"
@@ -45,15 +48,96 @@
             app:tint="@color/light_blue" />
 
         <TextView
+            android:id="@+id/sales_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Vendas"
             android:textColor="@color/light_grey"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/button"
-            app:layout_constraintStart_toStartOf="@+id/button"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintEnd_toEndOf="@+id/sales_button"
+            app:layout_constraintStart_toStartOf="@+id/sales_button"
+            app:layout_constraintTop_toBottomOf="@+id/sales_button" />
+
+        <ImageView
+            android:id="@+id/sync_button"
+            android:layout_width="165dp"
+            android:layout_height="165dp"
+            android:background="@drawable/button_ripple"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="20dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/baseline_sync_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/light_blue" />
+
+        <TextView
+            android:id="@+id/sync_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Sincronização"
+            android:textColor="@color/light_grey"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/sync_button"
+            app:layout_constraintStart_toStartOf="@+id/sync_button"
+            app:layout_constraintTop_toBottomOf="@+id/sync_button" />
+
+        <ImageView
+            android:id="@+id/reports_button"
+            android:layout_width="165dp"
+            android:layout_height="165dp"
+            android:background="@drawable/button_ripple"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="20dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/baseline_report_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sales_textView"
+            app:tint="@color/light_blue" />
+
+        <TextView
+            android:id="@+id/reports_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Relatórios"
+            android:textColor="@color/light_grey"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/reports_button"
+            app:layout_constraintStart_toStartOf="@+id/reports_button"
+            app:layout_constraintTop_toBottomOf="@+id/reports_button" />
+
+        <ImageView
+            android:id="@+id/registrations_button"
+            android:layout_width="165dp"
+            android:layout_height="165dp"
+            android:background="@drawable/button_ripple"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="20dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/baseline_app_registration_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sync_textView"
+            app:tint="@color/light_blue" />
+
+        <TextView
+            android:id="@+id/registrations_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Cadastros"
+            android:textColor="@color/light_grey"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/registrations_button"
+            app:layout_constraintStart_toStartOf="@+id/registrations_button"
+            app:layout_constraintTop_toBottomOf="@+id/registrations_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
