@@ -43,7 +43,7 @@ android {
 }
 
 dependencies {
-    val navigationVersion = "2.7.4"
+    val navigationVersion = "2.7.5"
     val roomVersion = "2.6.0"
 
     // Android Navigation
@@ -53,6 +53,9 @@ dependencies {
     // Room
     implementation("androidx.room:room-ktx:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
+
+    // Viewpager2
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

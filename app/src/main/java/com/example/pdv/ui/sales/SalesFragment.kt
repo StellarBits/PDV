@@ -1,14 +1,39 @@
 package com.example.pdv.ui.sales
 
-import androidx.lifecycle.ViewModelProvider
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.pdv.R
+import android.view.ViewGroup.MarginLayoutParams
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
+import com.example.pdv.databinding.FragmentSalesBinding
+import com.example.pdv.ui.adapter.SalesFragmentAdapter
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import kotlin.random.Random
 
 class SalesFragment : Fragment() {
+
+    private lateinit var viewPager: ViewPager2
+    private lateinit var tabLayout: TabLayout
+
+    private lateinit var adapter: SalesFragmentAdapter
+
+    var data = listOf("Lista de produtos do grupo 'Bebidas'",
+        "Lista de produtos do grupo 'Carnes'",
+        "Lista de produtos do grupo 'Doces'",
+        "Lista de produtos do grupo 'Bebidas'",
+        "Lista de produtos do grupo 'Carnes'",
+        "Lista de produtos do grupo 'Doces'",
+        "Lista de produtos do grupo 'Bebidas'",
+        "Lista de produtos do grupo 'Carnes'",
+        "Lista de produtos do grupo 'Doces'"
+    )
+
+    var tabs = listOf("Bebidas", "Carnes", "Doces", "Bebidas", "Carnes", "Doces", "Bebidas", "Carnes", "Doces")
 
     companion object {
         fun newInstance() = SalesFragment()
@@ -16,17 +41,48 @@ class SalesFragment : Fragment() {
 
     private lateinit var viewModel: SalesViewModel
 
+    private val binding: FragmentSalesBinding by lazy {
+        FragmentSalesBinding.inflate(layoutInflater)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_sales, container, false)
-    }
+    ): View {
+        val appBar = (activity as? AppCompatActivity)?.supportActionBar
+        appBar?.hide()
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SalesViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+        adapter = SalesFragmentAdapter(this, data)
+        viewPager = binding.viewpager2
+        tabLayout = binding.tablayout
 
+        viewPager.adapter = adapter
+
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = tabs[position]
+
+            // TODO Replace code bellow to color got from API
+            val randomColor = Color.rgb(Random.nextInt(256), Random.nextInt(256), Random.nextInt(256))
+            tab.view.setBackgroundColor(randomColor)
+        }.attach()
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                viewPager.currentItem = tab.position
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) { }
+
+            override fun onTabReselected(tab: TabLayout.Tab) { }
+        })
+
+        for (i in 0 until tabLayout.tabCount) {
+            val tab = (tabLayout.getChildAt(0) as ViewGroup).getChildAt(i)
+            val p = tab.layoutParams as MarginLayoutParams
+            p.setMargins(0, 0, 30, 10)
+            tab.requestLayout()
+        }
+
+        return binding.root
+    }
 }
