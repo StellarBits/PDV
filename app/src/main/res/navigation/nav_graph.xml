@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.pdv.ui.login.LoginFragment"
+        android:name="com.stellarbitsapps.pdv.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainScreenFragment"
-        android:name="com.example.pdv.ui.mainscreen.MainScreenFragment"
+        android:name="com.stellarbitsapps.pdv.ui.mainscreen.MainScreenFragment"
         android:label="fragment_main_screen"
         tools:layout="@layout/fragment_main_screen" >
         <action
@@ -46,27 +46,27 @@
     </fragment>
     <fragment
         android:id="@+id/networkSettingsFragment"
-        android:name="com.example.pdv.ui.settings.networksettings.NetworkSettingsFragment"
+        android:name="com.stellarbitsapps.pdv.ui.settings.networksettings.NetworkSettingsFragment"
         android:label="fragment_network_settings"
         tools:layout="@layout/fragment_network_settings" />
     <fragment
         android:id="@+id/printLayoutFragment"
-        android:name="com.example.pdv.ui.settings.printlayout.PrintLayoutFragment"
+        android:name="com.stellarbitsapps.pdv.ui.settings.printlayout.PrintLayoutFragment"
         android:label="fragment_print_layout"
         tools:layout="@layout/fragment_print_layout" />
     <fragment
         android:id="@+id/registrationsFragment"
-        android:name="com.example.pdv.ui.registrations.RegistrationsFragment"
+        android:name="com.stellarbitsapps.pdv.ui.registrations.RegistrationsFragment"
         android:label="fragment_registrations"
         tools:layout="@layout/fragment_registrations" />
     <fragment
         android:id="@+id/reportFragment"
-        android:name="com.example.pdv.ui.report.ReportFragment"
+        android:name="com.stellarbitsapps.pdv.ui.report.ReportFragment"
         android:label="fragment_report"
         tools:layout="@layout/fragment_report" />
     <fragment
         android:id="@+id/salesFragment"
-        android:name="com.example.pdv.ui.sales.SalesFragment"
+        android:name="com.stellarbitsapps.pdv.ui.sales.SalesFragment"
         android:label="fragment_sales"
         tools:layout="@layout/fragment_sales" >
         <action
@@ -75,22 +75,22 @@
     </fragment>
     <fragment
         android:id="@+id/synchronizationFragment"
-        android:name="com.example.pdv.ui.synchronization.SynchronizationFragment"
+        android:name="com.stellarbitsapps.pdv.ui.synchronization.SynchronizationFragment"
         android:label="fragment_synchronization"
         tools:layout="@layout/fragment_synchronization" />
     <fragment
         android:id="@+id/taxSettingsFragment"
-        android:name="com.example.pdv.ui.settings.taxsettings.TaxSettingsFragment"
+        android:name="com.stellarbitsapps.pdv.ui.settings.taxsettings.TaxSettingsFragment"
         android:label="fragment_tax_settings"
         tools:layout="@layout/fragment_tax_settings" />
     <fragment
         android:id="@+id/tefSettingsFragment"
-        android:name="com.example.pdv.ui.settings.tefsettings.TefSettingsFragment"
+        android:name="com.stellarbitsapps.pdv.ui.settings.tefsettings.TefSettingsFragment"
         android:label="fragment_tef_settings"
         tools:layout="@layout/fragment_tef_settings" />
     <fragment
         android:id="@+id/finalizeSaleFragment"
-        android:name="com.example.pdv.ui.sales.finalizesale.FinalizeSaleFragment"
+        android:name="com.stellarbitsapps.pdv.ui.sales.finalizesale.FinalizeSaleFragment"
         android:label="fragment_finalize_sale"
         tools:layout="@layout/fragment_finalize_sale" />
 </navigation>

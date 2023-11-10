@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.pdv"
+    namespace = "com.stellarbitsapps.pdv"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.pdv"
+        applicationId = "com.stellarbitsapps.pdv"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
