@@ -1,6 +1,5 @@
 package com.stellarbitsapps.pdv.ui.sales.finalizesale
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,12 +20,6 @@ class FinalizeSaleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_finalize_sale, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FinalizeSaleViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }

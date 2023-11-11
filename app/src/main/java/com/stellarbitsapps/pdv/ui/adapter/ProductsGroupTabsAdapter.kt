@@ -1,23 +1,25 @@
 package com.stellarbitsapps.pdv.ui.adapter
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.stellarbitsapps.pdv.model.Group
+import com.stellarbitsapps.pdv.model.Product
 import com.stellarbitsapps.pdv.ui.sales.dynamicfragments.DynamicGroupsAndProductsFragment
 
-class ProductsGroupTabsAdapter(fragment: Fragment, private val tabs: List<String>) :
+class ProductsGroupTabsAdapter(
+    fragment: Fragment,
+    private val groups: MutableList<Group>,
+    private val products: MutableList<MutableList<Product>>
+) :
     FragmentStateAdapter(fragment) {
 
     override fun createFragment(position: Int): Fragment {
-        val fragment = DynamicGroupsAndProductsFragment()
-        val bundle = Bundle()
-        bundle.putString("key", tabs[position])
-        fragment.arguments = bundle
-        return fragment
+        val groupId = groups[position].id
+        return DynamicGroupsAndProductsFragment.newInstance(products[position].filter { it.groupId == groupId })
     }
 
     override fun getItemCount(): Int {
-        return tabs.size
+        return groups.size
     }
 
 }

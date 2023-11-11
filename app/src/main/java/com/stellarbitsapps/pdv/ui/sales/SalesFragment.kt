@@ -1,19 +1,21 @@
 package com.stellarbitsapps.pdv.ui.sales
 
-import android.graphics.Color
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
+import android.view.animation.DecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.stellarbitsapps.pdv.databinding.FragmentSalesBinding
 import com.stellarbitsapps.pdv.ui.adapter.ProductsGroupTabsAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlin.random.Random
+import com.stellarbitsapps.pdv.util.MockedData
 
 class SalesFragment : Fragment() {
 
@@ -22,18 +24,9 @@ class SalesFragment : Fragment() {
 
     private lateinit var adapter: ProductsGroupTabsAdapter
 
-    var data = listOf("Lista de produtos do grupo 'Bebidas'",
-        "Lista de produtos do grupo 'Carnes'",
-        "Lista de produtos do grupo 'Doces'",
-        "Lista de produtos do grupo 'Bebidas'",
-        "Lista de produtos do grupo 'Carnes'",
-        "Lista de produtos do grupo 'Doces'",
-        "Lista de produtos do grupo 'Bebidas'",
-        "Lista de produtos do grupo 'Carnes'",
-        "Lista de produtos do grupo 'Doces'"
-    )
+    private var groups = MockedData.groups
 
-    var tabs = listOf("Bebidas", "Carnes", "Doces", "Bebidas", "Carnes", "Doces", "Bebidas", "Carnes", "Doces")
+    private var products = MockedData.products
 
     companion object {
         fun newInstance() = SalesFragment()
@@ -52,18 +45,18 @@ class SalesFragment : Fragment() {
         val appBar = (activity as? AppCompatActivity)?.supportActionBar
         appBar?.hide()
 
-        adapter = ProductsGroupTabsAdapter(this, data)
+        // TODO Improve tab performance.
+        adapter = ProductsGroupTabsAdapter(this, groups, products)
         viewPager = binding.viewpager2
         tabLayout = binding.tablayout
 
         viewPager.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = tabs[position]
+            tab.text = groups[position].name
 
-            // TODO Replace code bellow to color got from API
-            val randomColor = Color.rgb(Random.nextInt(256), Random.nextInt(256), Random.nextInt(256))
-            tab.view.setBackgroundColor(randomColor)
+            val tabColor = resources.getColor(groups[position].color, null)
+            tab.view.setBackgroundColor(tabColor)
         }.attach()
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {

@@ -1,6 +1,5 @@
 package com.stellarbitsapps.pdv.ui.settings.taxsettings
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,12 +20,6 @@ class TaxSettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_tax_settings, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(TaxSettingsViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }
