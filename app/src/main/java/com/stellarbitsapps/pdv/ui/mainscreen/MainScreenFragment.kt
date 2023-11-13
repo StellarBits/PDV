@@ -2,7 +2,6 @@ package com.stellarbitsapps.pdv.ui.mainscreen
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -10,6 +9,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
@@ -35,6 +35,9 @@ class MainScreenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val appBar = (activity as? AppCompatActivity)?.supportActionBar
+        appBar?.show()
+
         setHasOptionsMenu(true)
 
         binding.salesButton.setOnClickListener {

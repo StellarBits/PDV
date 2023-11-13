@@ -10,18 +10,25 @@ import androidx.lifecycle.lifecycleScope
 import com.stellarbitsapps.pdv.databinding.FragmentDynamicGroupsAndProductsBinding
 import com.stellarbitsapps.pdv.model.Product
 import com.stellarbitsapps.pdv.ui.adapter.ProductAdapter
+import com.stellarbitsapps.pdv.ui.sales.SalesFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class DynamicGroupsAndProductsFragment : Fragment() {
 
+    private lateinit var salesFragment: SalesFragment
+
     companion object {
         private const val ARG_PRODUCTS = "products"
 
-        fun newInstance(products: List<Product>): DynamicGroupsAndProductsFragment {
+        fun newInstance(
+            products: List<Product>,
+            salesFragment: SalesFragment
+        ): DynamicGroupsAndProductsFragment {
             val fragment = DynamicGroupsAndProductsFragment()
             val args = Bundle()
             args.putParcelableArrayList(ARG_PRODUCTS, ArrayList(products))
+            fragment.salesFragment = salesFragment
             fragment.arguments = args
             return fragment
         }
@@ -38,7 +45,7 @@ class DynamicGroupsAndProductsFragment : Fragment() {
     ): View {
         val recyclerView = binding.rvProducts
 
-        val productAdapter = ProductAdapter(ArrayList())
+        val productAdapter = ProductAdapter(ArrayList(), this)
         recyclerView.adapter = productAdapter
 
         arguments?.getParcelableArrayList<Product>(ARG_PRODUCTS)?.let { products ->
@@ -49,5 +56,9 @@ class DynamicGroupsAndProductsFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    fun productClicked(product: Product) {
+        SalesFragment.updateProductsListView(salesFragment, product)
     }
 }

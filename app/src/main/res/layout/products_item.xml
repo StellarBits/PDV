@@ -14,22 +14,10 @@
         android:layout_margin="5dp">
 
         <Button
-            android:id="@+id/bt_token"
+            android:id="@+id/bt_product"
             style="@style/ButtonStyle"
             android:text="@{product.name}"
             tools:text="Coca-cola" />
-
-        <TextView
-            android:id="@+id/tv_counter"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@drawable/round_background"
-            android:layout_gravity="end"
-            android:gravity="center"
-            android:text="0"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:textStyle="bold" />
 
     </FrameLayout>
 
