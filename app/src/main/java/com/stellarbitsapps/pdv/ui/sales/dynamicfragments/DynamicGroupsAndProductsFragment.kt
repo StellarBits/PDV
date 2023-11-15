@@ -20,14 +20,17 @@ class DynamicGroupsAndProductsFragment : Fragment() {
 
     companion object {
         private const val ARG_PRODUCTS = "products"
+        private const val ARG_GROUP_COLOR = "group_color"
 
         fun newInstance(
             products: List<Product>,
-            salesFragment: SalesFragment
+            salesFragment: SalesFragment,
+            groupColor: Int
         ): DynamicGroupsAndProductsFragment {
             val fragment = DynamicGroupsAndProductsFragment()
             val args = Bundle()
             args.putParcelableArrayList(ARG_PRODUCTS, ArrayList(products))
+            args.putInt(ARG_GROUP_COLOR, groupColor)
             fragment.salesFragment = salesFragment
             fragment.arguments = args
             return fragment
@@ -44,8 +47,9 @@ class DynamicGroupsAndProductsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val recyclerView = binding.rvProducts
+        val groupColor = arguments?.getInt(ARG_GROUP_COLOR)
 
-        val productAdapter = ProductAdapter(ArrayList(), this)
+        val productAdapter = ProductAdapter(ArrayList(), groupColor!!, this)
         recyclerView.adapter = productAdapter
 
         arguments?.getParcelableArrayList<Product>(ARG_PRODUCTS)?.let { products ->

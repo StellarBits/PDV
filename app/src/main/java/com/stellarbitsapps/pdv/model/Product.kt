@@ -13,5 +13,7 @@ data class Product(
     @ColumnInfo(name = "preco_atacado") val wholesalePrice: Float,
     @ColumnInfo(name = "qtde_atacado") val wholesaleQuantity: Float,
     @ColumnInfo(name = "estoque") val stock: Float,
-    @ColumnInfo(name = "unidade") val unit: Float
+    @ColumnInfo(name = "unidade") val unit: Float,
+    var totalPriceOfQuantitySold: Float = 0f,
+    var saleQuantity: Int = 0
 ) : Parcelable

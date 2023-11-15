@@ -1,5 +1,6 @@
 package com.stellarbitsapps.pdv.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,13 +10,18 @@ import com.stellarbitsapps.pdv.ui.sales.dynamicfragments.DynamicGroupsAndProduct
 
 class ProductAdapter(
     private val products: MutableList<Product>,
+    private val groupColor: Int,
     private val dynamicGroupsAndProductsFragment: DynamicGroupsAndProductsFragment
 ) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     class ProductViewHolder(private val binding: ProductsItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(product: Product, dynamicGroupsAndProductsFragment: DynamicGroupsAndProductsFragment) {
-            binding.product = product
+        @SuppressLint("SetTextI18n")
+        fun bind(product: Product, groupColor: Int, dynamicGroupsAndProductsFragment: DynamicGroupsAndProductsFragment) {
+            binding.btProduct.text = "${product.name}\n\nR$ ${"%.2f".format(product.price)}"
+
+            val buttonBackgroundColor = dynamicGroupsAndProductsFragment.resources.getColor(groupColor, null)
+            binding.btProduct.setBackgroundColor(buttonBackgroundColor)
 
             with(binding) {
                 executePendingBindings()
@@ -35,7 +41,7 @@ class ProductAdapter(
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = products[position]
-        holder.bind(product, dynamicGroupsAndProductsFragment)
+        holder.bind(product, groupColor, dynamicGroupsAndProductsFragment)
     }
 
     override fun getItemCount(): Int {

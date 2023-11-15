@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
-import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -16,8 +15,8 @@ import com.stellarbitsapps.pdv.ui.adapter.ProductsGroupTabsAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.stellarbitsapps.pdv.model.Product
+import com.stellarbitsapps.pdv.ui.adapter.ProductsListViewAdapter
 import com.stellarbitsapps.pdv.util.MockedData
-import com.stellarbitsapps.pdv.util.Utils
 
 
 class SalesFragment : Fragment() {
@@ -30,9 +29,9 @@ class SalesFragment : Fragment() {
 
     private lateinit var productsListView: ListView
 
-    private lateinit var arrayAdapter: ArrayAdapter<String>
+    private lateinit var productsListViewAdapter: ProductsListViewAdapter
 
-    private var listItems = arrayListOf<String>()
+    private var listOfItems = mutableListOf<Product>()
 
     private var totalValue = 0f
 
@@ -102,42 +101,59 @@ class SalesFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun initListView() {
-        // TODO Temp code. Remove later.
-        arrayAdapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_list_item_2,
-            android.R.id.text1,
-            listItems
-        )
+        // TODO Temp code. Remove or adjust later.
+        productsListViewAdapter = ProductsListViewAdapter(requireContext(), listOfItems)
 
         productsListView = binding.lvProducts
-        productsListView.adapter = arrayAdapter
+        productsListView.adapter = productsListViewAdapter
 
         productsListView.setOnItemClickListener { _, _, position, _ ->
-            val charIndex = listItems[position].indexOf('$')
 
-            if (charIndex != -1) {
-                val itemPrice = listItems[position].substring(charIndex + 1)
+            totalValue -= listOfItems[position].price
+            binding.tvTotal.text = "R$ ${"%.2f".format(totalValue)}"
 
-                totalValue -= Utils.convertMoneyToFloat(itemPrice)
-                binding.tvTotal.text = "R$ ${"%.2f".format(totalValue)}"
+            if (listOfItems[position].saleQuantity == 1) {
+                listOfItems.removeAt(position)
+            } else {
+                listOfItems[position].totalPriceOfQuantitySold -= listOfItems[position].price
+                listOfItems[position].saleQuantity -= 1
             }
 
-            listItems.removeAt(position)
-            arrayAdapter.notifyDataSetChanged()
+            productsListViewAdapter.notifyDataSetChanged()
         }
     }
 
     @SuppressLint("SetTextI18n")
     fun updateListView(item: Product) {
-        val listItemAux = "${item.name}\n${"R$ " + String.format("%.2f", item.price)}"
+        val productItem = item.copy()
 
-        totalValue += item.price
-        binding.tvTotal.text = "R$ ${String.format("%.2f", totalValue)}"
+        if (listOfItems.any { it.id == item.id }) {
+            val position = listOfItems.indexOfFirst { it.id == item.id }
 
-        listItems.add(listItemAux)
-        arrayAdapter.notifyDataSetChanged()
-        val lastPosition = arrayAdapter.count - 1
+            val newPrice = listOfItems.filter {
+                it.id == item.id
+            }[0].totalPriceOfQuantitySold + item.price
+
+            val newQuantity = listOfItems.filter {
+                it.id == item.id
+            }[0].saleQuantity + 1
+
+            productItem.totalPriceOfQuantitySold = newPrice
+            productItem.saleQuantity = newQuantity
+
+            listOfItems[position] = productItem
+
+        } else {
+            productItem.totalPriceOfQuantitySold = productItem.price
+            productItem.saleQuantity = 1
+            listOfItems.add(productItem)
+        }
+
+        productsListViewAdapter.notifyDataSetChanged()
+        val lastPosition = productsListViewAdapter.count - 1
         productsListView.smoothScrollToPosition(lastPosition)
+
+        totalValue += productItem.price
+        binding.tvTotal.text = "R$ ${String.format("%.2f", totalValue)}"
     }
 }

@@ -18,7 +18,7 @@ class ProductsGroupTabsAdapter(
 
     override fun createFragment(position: Int): Fragment {
         val groupId = groups[position].id
-        return DynamicGroupsAndProductsFragment.newInstance(products[position].filter { it.groupId == groupId }, salesFragment)
+        return DynamicGroupsAndProductsFragment.newInstance(products[position].filter { it.groupId == groupId }, salesFragment, groups[position].color)
     }
 
     override fun getItemCount(): Int {

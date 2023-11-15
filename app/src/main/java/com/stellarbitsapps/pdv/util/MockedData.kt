@@ -72,7 +72,7 @@ class MockedData {
             ),
             mutableListOf(
                 Product(
-                    0,
+                    4,
                     "Fraldinha",
                     1,
                     35.90f,
@@ -82,7 +82,7 @@ class MockedData {
                     1f
                 ),
                 Product(
-                    1,
+                    5,
                     "Picanha",
                     1,
                     49.90f,
@@ -92,7 +92,7 @@ class MockedData {
                     1f
                 ),
                 Product(
-                    2,
+                    6,
                     "Filé de costela",
                     1,
                     37.90f,
@@ -102,7 +102,7 @@ class MockedData {
                     1f
                 ),
                 Product(
-                    3,
+                    7,
                     "Filé mignon",
                     1,
                     49.90f,
@@ -112,7 +112,7 @@ class MockedData {
                     1f
                 ),
                 Product(
-                    4,
+                    8,
                     "Peito de frango",
                     1,
                     29.90f,
@@ -124,7 +124,7 @@ class MockedData {
             ),
             mutableListOf(
                 Product(
-                    0,
+                    9,
                     "Quindim",
                     2,
                     2.90f,
@@ -134,7 +134,7 @@ class MockedData {
                     1f
                 ),
                 Product(
-                    1,
+                    10,
                     "Bomba de chocolate",
                     2,
                     3.90f,
@@ -144,7 +144,7 @@ class MockedData {
                     1f
                 ),
                 Product(
-                    2,
+                    11,
                     "Pudim de leite condensado",
                     2,
                     15.90f,
