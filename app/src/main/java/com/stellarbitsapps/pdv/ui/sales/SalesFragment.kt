@@ -17,6 +17,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.stellarbitsapps.pdv.model.Product
 import com.stellarbitsapps.pdv.ui.adapter.ProductsListViewAdapter
 import com.stellarbitsapps.pdv.util.MockedData
+import kotlin.math.abs
 
 
 class SalesFragment : Fragment() {
@@ -110,7 +111,7 @@ class SalesFragment : Fragment() {
         productsListView.setOnItemClickListener { _, _, position, _ ->
 
             totalValue -= listOfItems[position].price
-            binding.tvTotal.text = "R$ ${"%.2f".format(totalValue)}"
+            binding.tvTotal.text = "R$ ${"%.2f".format(abs(totalValue))}"
 
             if (listOfItems[position].saleQuantity == 1) {
                 listOfItems.removeAt(position)
@@ -154,6 +155,6 @@ class SalesFragment : Fragment() {
         productsListView.smoothScrollToPosition(lastPosition)
 
         totalValue += productItem.price
-        binding.tvTotal.text = "R$ ${String.format("%.2f", totalValue)}"
+        binding.tvTotal.text = "R$ ${"%.2f".format(totalValue)}"
     }
 }

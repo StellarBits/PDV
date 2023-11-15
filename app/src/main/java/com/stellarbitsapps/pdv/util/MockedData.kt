@@ -120,11 +120,62 @@ class MockedData {
                     5f,
                     70f,
                     1f
+                ),
+                Product(
+                    9,
+                    "Paleta bovina",
+                    1,
+                    29.90f,
+                    21.90f,
+                    5f,
+                    70f,
+                    1f
+                ),
+                Product(
+                    10,
+                    "Panceta",
+                    1,
+                    17.90f,
+                    15.90f,
+                    5f,
+                    100f,
+                    1f
+                ),
+                Product(
+                    11,
+                    "Linguiça toscana Sadia",
+                    1,
+                    21.90f,
+                    16.90f,
+                    5f,
+                    100f,
+                    1f
+                ),
+                Product(
+                    12,
+                    "Linguiça toscana Seara",
+                    1,
+                    23.90f,
+                    19.90f,
+                    5f,
+                    100f,
+                    1f
+                )
+                ,
+                Product(
+                    13,
+                    "Linguiça toscana Perdigão",
+                    1,
+                    25.90f,
+                    11.90f,
+                    5f,
+                    100f,
+                    1f
                 )
             ),
             mutableListOf(
                 Product(
-                    9,
+                    14,
                     "Quindim",
                     2,
                     2.90f,
@@ -134,7 +185,7 @@ class MockedData {
                     1f
                 ),
                 Product(
-                    10,
+                    15,
                     "Bomba de chocolate",
                     2,
                     3.90f,
@@ -144,7 +195,7 @@ class MockedData {
                     1f
                 ),
                 Product(
-                    11,
+                    16,
                     "Pudim de leite condensado",
                     2,
                     15.90f,
